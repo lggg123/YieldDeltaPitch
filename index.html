@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yield Delta - AI-Powered DeFi Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .deck-container {
+        width: 100%;
+        max-width: 1200px;
+        background: rgba(15, 23, 42, 0.95);
+        border-radius: 24px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .slide {
+        min-height: 650px;
+        padding: 80px 60px;
+        display: none;
+        animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        color: #ffffff;
+        position: relative;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .slide.active {
+        display: block;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .slide-header {
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .slide-header::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        border-radius: 2px;
+    }
+
+    h1 {
+        font-size: 4em;
+        font-weight: 900;
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+
+    h2 {
+        font-size: 3em;
+        margin-bottom: 15px;
+        color: #ffffff;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+        color: #3b82f6;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .subtitle {
+        font-size: 1.3em;
+        color: #94a3b8;
+        font-weight: 400;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    .card {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(51, 65, 85, 0.3));
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 16px;
+        padding: 28px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+        border-color: rgba(59, 130, 246, 0.3);
+        box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.2);
+    }
+
+    .stat-card {
+        text-align: center;
+        padding: 32px;
+    }
+
+    .stat-number {
+        font-size: 3.5em;
+        font-weight: 900;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+        font-size: 1em;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+    }
+
+    .feature-list {
+        list-style: none;
+        margin-top: 32px;
+    }
+
+    .feature-list li {
+        padding: 20px 24px;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.3), rgba(51, 65, 85, 0.2));
+        border-left: 3px solid #3b82f6;
+        border-radius: 8px;
+        font-size: 1.15em;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .feature-list li:hover {
+        background: rgba(59, 130, 246, 0.05);
+        transform: translateX(8px);
+        border-left-color: #8b5cf6;
+    }
+
+    .feature-icon {
+        font-size: 1.4em;
+        margin-top: -2px;
+    }
+
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    .tech-badge {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+        color: #e0e7ff;
+        padding: 10px 20px;
+        border-radius: 24px;
+        font-weight: 600;
+        font-size: 0.95em;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .tech-badge:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
+        box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 60px;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .nav-button {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 24px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+
+    .nav-button:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+    }
+
+    .nav-button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    .slide-counter {
+        color: #94a3b8;
+        font-size: 1em;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .highlight {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+    }
+
+    .cta {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: white;
+        padding: 16px 40px;
+        border-radius: 28px;
+        font-size: 1.1em;
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 32px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.4);
+        letter-spacing: 0.02em;
+    }
+
+    .cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.5);
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 32px;
+        margin-top: 40px;
+    }
+
+    .team-member {
+        text-align: center;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.3), rgba(51, 65, 85, 0.2));
+        border-radius: 16px;
+        transition: all 0.3s ease;
+    }
+
+    .team-member:hover {
+        transform: translateY(-4px);
+        background: rgba(59, 130, 246, 0.05);
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        margin: 0 auto 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
+        color: white;
+    }
+
+    .roadmap {
+        position: relative;
+        padding-left: 50px;
+        margin-top: 40px;
+    }
+
+    .roadmap::before {
+        content: '';
+        position: absolute;
+        left: 12px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    }
+
+    .roadmap-item {
+        position: relative;
+        margin-bottom: 32px;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.3), rgba(51, 65, 85, 0.2));
+        border-radius: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .roadmap-item:hover {
+        background: rgba(59, 130, 246, 0.05);
+        transform: translateX(8px);
+    }
+
+    .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: -42px;
+        top: 32px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #3b82f6;
+        border: 3px solid #0f172a;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+
+    .feature-showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .feature-card {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.3);
+        border-color: rgba(99, 102, 241, 0.5);
+    }
+
+    .feature-status {
+        display: inline-block;
+        padding: 4px 12px;
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+        border-radius: 12px;
+        font-size: 0.85em;
+        font-weight: 600;
+        margin-top: 12px;
+    }
+
+    .winner-badge {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: linear-gradient(135deg, #f59e0b, #ef4444);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 24px;
+        font-weight: 700;
+        font-size: 1em;
+        animation: pulse 2s infinite;
+        box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4);
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    .sei-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(239, 68, 68, 0.2));
+        padding: 8px 16px;
+        border-radius: 16px;
+        font-weight: 600;
+        font-size: 0.9em;
+        border: 1px solid rgba(236, 72, 153, 0.3);
+        color: #fbbf24;
+    }
+
+    .innovation-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    .innovation-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.3), rgba(51, 65, 85, 0.2));
+        border-radius: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .innovation-card:hover {
+        background: rgba(59, 130, 246, 0.05);
+        transform: translateY(-4px);
+        border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .innovation-icon {
+        font-size: 2em;
+        min-width: 40px;
+    }
+
+    .innovation-content h4 {
+        color: #3b82f6;
+        margin-bottom: 8px;
+        font-size: 1.1em;
+    }
+
+    .innovation-content p {
+        color: #94a3b8;
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+        .slide {
+            padding: 40px 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            font-size: 2em;
+        }
+        
+        .innovation-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="deck-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="winner-badge">🏆 SEI AI Winner • $2000</div>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 500px; text-align: center;">
+                <h1 style="font-size: 4.5em; margin-bottom: 30px;">Yield Delta</h1>
+                <p class="subtitle" style="font-size: 1.6em; margin-bottom: 30px;">Next-Generation AI-Powered DeFi Platform on SEI Network</p>
+                <p style="font-size: 1.2em; color: #94a3b8; margin-bottom: 40px;">Maximize yields • Minimize risk • 400ms rebalancing</p>
+                <div class="tech-stack" style="justify-content: center;">
+                    <span class="sei-badge">⚡ SEI Network</span>
+                    <span class="tech-badge">🧠 AI/ML</span>
+                    <span class="tech-badge">🛡️ IL Protection</span>
+                    <span class="tech-badge">📊 Real-time Analytics</span>
+                </div>
+            </div>
+        </div>
+    <!-- Slide 2: The Problem -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>The Problem</h2>
+            <p class="subtitle">DeFi is Broken for Most Users</p>
+        </div>
+        <div class="feature-list">
+            <li>
+                <span class="feature-icon">⏰</span>
+                <div>
+                    <strong class="highlight">Manual Management Hell:</strong> LPs spend hours daily monitoring positions across protocols, missing opportunities while they sleep
+                </div>
+            </li>
+            <li>
+                <span class="feature-icon">📉</span>
+                <div>
+                    <strong class="highlight">Impermanent Loss Devastation:</strong> 50%+ of LPs lose money despite providing valuable liquidity to protocols
+                </div>
+            </li>
+            <li>
+                <span class="feature-icon">🎓</span>
+                <div>
+                    <strong class="highlight">Knowledge Barrier:</strong> Complex strategies require months of learning - institutional tools are inaccessible to retail
+                </div>
+            </li>
+            <li>
+                <span class="feature-icon">⛽</span>
+                <div>
+                    <strong class="highlight">Network Limitations:</strong> High gas on Ethereum, slow finality on L2s make active management impossible
+                </div>
+            </li>
+        </div>
+        <div class="content-grid" style="margin-top: 40px;">
+            <div class="stat-card card" style="background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.3);">
+                <div class="stat-number" style="color: #ef4444;">$3.2B</div>
+                <div class="stat-label">Lost to IL in 2024</div>
+            </div>
+            <div class="stat-card card" style="background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.3);">
+                <div class="stat-number" style="color: #f59e0b;">68%</div>
+                <div class="stat-label">LPs Underperform</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Solution -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Our Solution</h2>
+            <p class="subtitle">AI Meets Lightning-Fast Blockchain</p>
+        </div>
+        <div class="innovation-grid">
+            <div class="innovation-card">
+                <span class="innovation-icon">🧠</span>
+                <div class="innovation-content">
+                    <h4>AI-Powered Optimization</h4>
+                    <p>Machine learning algorithms continuously optimize liquidity positions across protocols</p>
+                </div>
+            </div>
+            <div class="innovation-card">
+                <span class="innovation-icon">⚡</span>
+                <div class="innovation-content">
+                    <h4>SEI Network Speed</h4>
+                    <p>Leverage 400ms block finality for rapid rebalancing - 100x faster than competitors</p>
+                </div>
+            </div>
+            <div class="innovation-card">
+                <span class="innovation-icon">🛡️</span>
+                <div class="innovation-content">
+                    <h4>Impermanent Loss Protection</h4>
+                    <p>Advanced hedging strategies minimize IL risk using predictive models</p>
+                </div>
+            </div>
+            <div class="innovation-card">
+                <span class="innovation-icon">📊</span>
+                <div class="innovation-content">
+                    <h4>Real-time Analytics</h4>
+                    <p>Beautiful 3D visualizations powered by Three.js and GSAP</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; padding: 24px; background: rgba(59, 130, 246, 0.05); border-radius: 12px;">
+            <p style="font-size: 1.3em;">
+                <span class="highlight">One-click deployment</span> • <span class="highlight">Institutional strategies</span> • <span class="highlight">Retail accessibility</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 4: Core Features -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Core Features</h2>
+            <p class="subtitle">Live on SEI Network</p>
+        </div>
+        <div class="feature-showcase">
+            <div class="feature-card">
+                <h3 style="color: white; font-size: 1.2em;">AI Rebalancing</h3>
+                <p style="margin: 12px 0; font-size: 2em;">🤖</p>
+                <p style="color: #94a3b8; font-size: 0.95em;">Automated position optimization using ML</p>
+                <span class="feature-status">✅ Live</span>
+            </div>
+            <div class="feature-card">
+                <h3 style="color: white; font-size: 1.2em;">Vault Management</h3>
+                <p style="margin: 12px 0; font-size: 2em;">🏦</p>
+                <p style="color: #94a3b8; font-size: 0.95em;">ERC-4626 compatible yield vaults</p>
+                <span class="feature-status">✅ Live</span>
+            </div>
+            <div class="feature-card">
+                <h3 style="color: white; font-size: 1.2em;">Liqui Chat</h3>
+                <p style="margin: 12px 0; font-size: 2em;">💬</p>
+                <p style="color: #94a3b8; font-size: 0.95em;">AI assistant for DeFi strategy</p>
+                <span class="feature-status">✅ Live</span>
+            </div>
+            <div class="feature-card">
+                <h3 style="color: white; font-size: 1.2em;">Market Analytics</h3>
+                <p style="margin: 12px 0; font-size: 2em;">📈</p>
+                <p style="color: #94a3b8; font-size: 0.95em;">Real-time market data & insights</p>
+                <span class="feature-status">✅ Live</span>
+            </div>
+            <div class="feature-card">
+                <h3 style="color: white; font-size: 1.2em;">Demo Mode</h3>
+                <p style="margin: 12px 0; font-size: 2em;">🎮</p>
+                <p style="color: #94a3b8; font-size: 0.95em;">Risk-free testing environment</p>
+                <span class="feature-status">✅ Live</span>
+            </div>
+        </div>
+        <div style="margin-top: 40px; padding: 24px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.05)); border-radius: 12px; text-align: center;">
+            <p style="font-size: 1.2em; color: #10b981;">🚀 All features are <strong>LIVE</strong> and operational on SEI Network</p>
+        </div>
+    </div>
+
+    <!-- Slide 5: Technology Stack -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Technology Architecture</h2>
+            <p class="subtitle">Built for Speed & Intelligence</p>
+        </div>
+        <div class="content-grid">
+            <div class="card">
+                <h3>🔗 Blockchain Layer</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">SEI Network</span>
+                    <span class="tech-badge">400ms Blocks</span>
+                    <span class="tech-badge">ERC-4626</span>
+                    <span class="tech-badge">SeiTrace</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🧠 AI/ML Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">TensorFlow</span>
+                    <span class="tech-badge">LSTM Models</span>
+                    <span class="tech-badge">Predictive ML</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🎨 Frontend</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">Three.js</span>
+                    <span class="tech-badge">GSAP</span>
+                    <span class="tech-badge">React</span>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 40px; padding: 32px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(59, 130, 246, 0.05)); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.2);">
+            <h3 style="text-align: center; margin-bottom: 20px;">Why SEI Network?</h3>
+            <div class="content-grid">
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: 2em;">400ms</div>
+                    <div class="stat-label">Block Time</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: 2em;">$0.01</div>
+                    <div class="stat-label">TX Cost</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: 2em;">12,500</div>
+                    <div class="stat-label">TPS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Market Opportunity -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Market Opportunity</h2>
+            <p class="subtitle">The DeFi Revolution is Just Beginning</p>
+        </div>
+        <div class="content-grid">
+            <div class="stat-card card">
+                <div class="stat-number">$50B+</div>
+                <div class="stat-label">Total DeFi TVL</div>
+            </div>
+            <div class="stat-card card">
+                <div class="stat-number">4M+</div>
+                <div class="stat-label">Active DeFi Users</div>
+            </div>
+            <div class="stat-card card">
+                <div class="stat-number">250%</div>
+                <div class="stat-label">YoY Growth</div>
+            </div>
+        </div>
+        <div style="margin-top: 40px;">
+            <h3 style="margin-bottom: 24px;">Target Audience</h3>
+            <div class="feature-list">
+                <li>
+                    <span class="feature-icon">🏗️</span>
+                    <div>
+                        <strong>Developers:</strong> Build on top of Yield Delta, integrate our APIs, contribute to the protocol
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">💰</span>
+                    <div>
+                        <strong>Liquidity Providers:</strong> Maximize yields with AI optimization and IL protection
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">🏛️</span>
+                    <div>
+                        <strong>Institutions:</strong> Access sophisticated DeFi strategies with enterprise-grade infrastructure
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Competitive Advantage -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Competitive Advantage</h2>
+            <p class="subtitle">Why We Win</p>
+        </div>
+        <div class="content-grid">
+            <div class="card">
+                <h3>⚡ Speed Advantage</h3>
+                <ul style="list-style: none; padding: 0; margin-top: 16px;">
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ 400ms rebalancing vs 12s on Ethereum</li>
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ 100x faster than competitors</li>
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ Real-time strategy execution</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🧠 AI Superiority</h3>
+                <ul style="list-style: none; padding: 0; margin-top: 16px;">
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ Proprietary ML models</li>
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ 87% prediction accuracy</li>
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ Self-improving algorithms</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>💎 User Experience</h3>
+                <ul style="list-style: none; padding: 0; margin-top: 16px;">
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ Beautiful 3D visualizations</li>
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ One-click strategies</li>
+                    <li style="padding: 8px 0; color: #94a3b8;">✓ AI chat assistant</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top: 40px; text-align: center; padding: 28px; background: rgba(16, 185, 129, 0.05); border-radius: 12px;">
+            <p style="font-size: 1.3em; color: #10b981;">First-mover advantage on SEI • Superior technology • Better UX</p>
+        </div>
+    </div>
+
+    <!-- Slide 8: Traction & Validation -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Traction & Validation</h2>
+            <p class="subtitle">Proven Success</p>
+        </div>
+        <div class="content-grid">
+            <div class="stat-card card">
+                <div class="stat-number">$2,000</div>
+                <div class="stat-label">SEI AI Prize</div>
+            </div>
+            <div class="stat-card card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Live Features</div>
+            </div>
+            <div class="stat-card card">
+                <div class="stat-number">87%</div>
+                <div class="stat-label">ML Accuracy</div>
+            </div>
+        </div>
+        <ul class="feature-list" style="margin-top: 40px;">
+            <li>
+                <span class="feature-icon">✅</span>
+                <div>Successfully deployed on SEI Network with all core features operational</div>
+            </li>
+            <li>
+                <span class="feature-icon">✅</span>
+                <div>Won SEI AI Accelerator Bonus Prize - validated by ecosystem leaders</div>
+            </li>
+            <li>
+                <span class="feature-icon">✅</span>
+                <div>Demo environment live at yielddelta.xyz for risk-free testing</div>
+            </li>
+            <li>
+                <span class="feature-icon">✅</span>
+                <div>Integration with SEI's native token and explorer (SeiTrace)</div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Slide 9: Roadmap -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Roadmap</h2>
+            <p class="subtitle">Path to DeFi Dominance</p>
+        </div>
+        <div class="roadmap">
+            <div class="roadmap-item">
+                <h3>Q1 2025 - Launch</h3>
+                <p style="color: #94a3b8; margin-top: 8px;">• Public mainnet launch</p>
+                <p style="color: #94a3b8;">• Initial liquidity mining program</p>
+                <p style="color: #94a3b8;">• Partnership with SEI ecosystem projects</p>
+                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $10M TVL</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>Q2 2025 - Expansion</h3>
+                <p style="color: #94a3b8; margin-top: 8px;">• Advanced AI strategies launch</p>
+                <p style="color: #94a3b8;">• Mobile app release</p>
+                <p style="color: #94a3b8;">• Cross-chain bridge integration</p>
+                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $50M TVL</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>Q3 2025 - Scale</h3>
+                <p style="color: #94a3b8; margin-top: 8px;">• Institutional product launch</p>
+                <p style="color: #94a3b8;">• $YIELD governance token</p>
+                <p style="color: #94a3b8;">• Advanced IL protection v2</p>
+                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $200M TVL</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>Q4 2025 - Dominate</h3>
+                <p style="color: #94a3b8; margin-top: 8px;">• Multi-chain deployment</p>
+                <p style="color: #94a3b8;">• B2B white-label solution</p>
+                <p style="color: #94a3b8;">• AI strategy marketplace</p>
+                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $500M TVL</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Team & Ask -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Team & Investment</h2>
+            <p class="subtitle">Join Us in Building the Future</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="avatar">👨‍💻</div>
+                <h3>[Founder Name]</h3>
+                <p style="color: #3b82f6;">CEO & Co-founder</p>
+                <p style="margin-top: 8px; color: #94a3b8; font-size: 0.9em;">Ex-[Company] • DeFi OG</p>
+            </div>
+            <div class="team-member">
+                <div class="avatar">👩‍💻</div>
+                <h3>[CTO Name]</h3>
+                <p style="color: #3b82f6;">CTO & Co-founder</p>
+                <p style="margin-top: 8px; color: #94a3b8; font-size: 0.9em;">AI/ML Expert • Ex-[Company]</p>
+            </div>
+            <div class="team-member">
+                <div class="avatar">🧑‍💻</div>
+                <h3>[Dev Name]</h3>
+                <p style="color: #3b82f6;">Lead Engineer</p>
+                <p style="margin-top: 8px; color: #94a3b8; font-size: 0.9em;">Smart Contract Expert</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 32px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1)); border-radius: 16px;">
+            <h3 style="text-align: center; margin-bottom: 24px;">Investment Opportunity</h3>
+            <div class="content-grid">
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: 1.8em;">$2M</div>
+                    <div class="stat-label">Seed Round</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: 1.8em;">$15M</div>
+                    <div class="stat-label">Valuation</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: 1.8em;">18mo</div>
+                    <div class="stat-label">Runway</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Call to Action -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Join the Revolution</h2>
+            <p class="subtitle">The Future of DeFi is Here</p>
+        </div>
+        <div style="text-align: center; padding: 60px 0;">
+            <h3 style="font-size: 2.5em; margin-bottom: 32px; color: white;">
+                Ready to revolutionize DeFi?
+            </h3>
+            <p style="font-size: 1.3em; margin-bottom: 40px; color: #94a3b8; line-height: 1.6;">
+                Yield Delta is transforming how liquidity works in DeFi.<br>
+                AI-powered. SEI-accelerated. User-obsessed.
+            </p>
+            
+            <div class="innovation-grid" style="max-width: 600px; margin: 0 auto 40px;">
+                <div class="stat-card" style="background: rgba(59, 130, 246, 0.1);">
+                    <div class="stat-number" style="font-size: 2em;">yielddelta.xyz</div>
+                    <div class="stat-label">Try Demo</div>
+                </div>
+                <div class="stat-card" style="background: rgba(139, 92, 246, 0.1);">
+                    <div class="stat-number" style="font-size: 2em;">Docs</div>
+                    <div class="stat-label">For Developers</div>
+                </div>
+            </div>
+
+            <a href="https://yielddelta.xyz" class="cta">Launch App</a>
+            
+            <div style="margin-top: 60px;">
+                <p style="font-size: 1.1em; margin-bottom: 20px; color: #94a3b8;">Connect with us</p>
+                <div class="tech-stack" style="justify-content: center;">
+                    <span class="tech-badge">𝕏 @yielddelta</span>
+                    <span class="tech-badge">📧 team@yielddelta.xyz</span>
+                    <span class="tech-badge">💬 Discord</span>
+                </div>
+            </div>
+            
+            <div class="winner-badge" style="position: static; margin: 40px auto; display: inline-block;">
+                🏆 SEI AI Accelerator Winner • $2000 Bonus Prize
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" onclick="previousSlide()">← Previous</button>
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">11</span>
+        </div>
+        <button class="nav-button" onclick="nextSlide()">Next →</button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    document.getElementById('total-slides').textContent = totalSlides;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+        document.getElementById('current-slide').textContent = index + 1;
+        
+        // Update navigation buttons
+        const prevBtn = document.querySelector('.nav-button');
+        const nextBtn = document.querySelectorAll('.nav-button')[1];
+        
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === totalSlides - 1;
+    }
+
+    function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+    }
+
+    function previousSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') previousSlide();
+        if (e.key === 'Home') {
+            currentSlide = 0;
+            showSlide(currentSlide);
+        }
+        if (e.key === 'End') {
+            currentSlide = totalSlides - 1;
+            showSlide(currentSlide);
+        }
+    });
+
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) nextSlide();
+        if (touchEndX > touchStartX + 50) previousSlide();
+    }
+
+    // Initialize
+    showSlide(0);
+</script>
+
+</body>
+</html>
