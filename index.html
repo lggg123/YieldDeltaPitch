@@ -20,8 +20,6 @@
             align-items: center;
             padding: 20px;
         }
-
-```
     .deck-container {
         width: 100%;
         max-width: 1200px;
@@ -274,6 +272,36 @@
         box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.5);
     }
 
+    /* Email button styles */
+    .email-button {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 28px;
+        font-size: 1.05em;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.4);
+        letter-spacing: 0.02em;
+        border: none;
+        cursor: pointer;
+    }
+
+    .email-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.5);
+        background: linear-gradient(135deg, #059669, #047857);
+    }
+
+    .email-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
     .team-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -474,6 +502,51 @@
         letter-spacing: 0.05em;
     }
 
+    .giga-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #ec4899, #f59e0b);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-size: 0.7em;
+        font-weight: 700;
+        margin-left: 8px;
+        vertical-align: middle;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 24px;
+    }
+
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+        color: #e0e7ff;
+        padding: 12px 24px;
+        border-radius: 24px;
+        font-weight: 600;
+        font-size: 0.95em;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .social-link:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
+        box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+    }
+
     @media (max-width: 768px) {
         .slide {
             padding: 40px 30px;
@@ -489,6 +562,10 @@
         
         .innovation-grid {
             grid-template-columns: 1fr;
+        }
+
+        .social-links {
+            flex-direction: column;
         }
     }
 </style>
@@ -510,8 +587,6 @@
                 </div>
             </div>
         </div>
-
-```
     <!-- Slide 2: The Problem -->
     <div class="slide">
         <div class="slide-header">
@@ -642,7 +717,7 @@
         </div>
     </div>
 
-    <!-- Slide 5: Technology Stack -->
+    <!-- Slide 5: Technology Stack - UPDATED TPS -->
     <div class="slide">
         <div class="slide-header">
             <h2>Technology Architecture</h2>
@@ -687,7 +762,7 @@
                     <div class="stat-label">TX Cost</div>
                 </div>
                 <div style="text-align: center;">
-                    <div class="stat-number" style="font-size: 2em;">12,500</div>
+                    <div class="stat-number" style="font-size: 1.8em;">~200K<span class="giga-badge">Giga</span></div>
                     <div class="stat-label">TPS</div>
                 </div>
             </div>
@@ -854,7 +929,7 @@
         </div>
     </div>
 
-    <!-- Slide 10: Team & Ask - UPDATED WITH CORRECT PRE-SEED NUMBERS -->
+    <!-- Slide 10: Team & Ask -->
     <div class="slide">
         <div class="slide-header">
             <h2>Team & Investment</h2>
@@ -900,13 +975,13 @@
         </div>
     </div>
 
-    <!-- Slide 11: Call to Action -->
+    <!-- Slide 11: Call to Action - IMPROVED EMAIL BUTTON -->
     <div class="slide">
         <div class="slide-header">
             <h2>Join the Revolution</h2>
             <p class="subtitle">The Future of DeFi is Here</p>
         </div>
-        <div style="text-align: center; padding: 60px 0;">
+        <div style="text-align: center; padding: 40px 0;">
             <h3 style="font-size: 2.5em; margin-bottom: 32px; color: white;">
                 Ready to revolutionize DeFi?
             </h3>
@@ -926,14 +1001,28 @@
                 </div>
             </div>
 
-            <a href="https://yielddelta.xyz" class="cta">Launch App</a>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+                <a href="https://yielddelta.xyz" class="cta">🚀 Launch App</a>
+                <a href="mailto:social@yielddelta.xyz?subject=YieldDelta%20Investment%20Inquiry&body=Hi%20George%2C%0A%0AI'm%20interested%20in%20learning%20more%20about%20YieldDelta.%0A%0A" class="email-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Email Us
+                </a>
+            </div>
             
-            <div style="margin-top: 60px;">
+            <div style="margin-top: 40px;">
                 <p style="font-size: 1.1em; margin-bottom: 20px; color: #94a3b8;">Connect with us</p>
-                <div class="tech-stack" style="justify-content: center;">
-                    <span class="tech-badge">𝕏 @yielddelta</span>
-                    <span class="tech-badge">📧 social@yielddelta.xyz</span>
-                    <span class="tech-badge">💬 Discord</span>
+                <div class="social-links">
+                    <a href="https://x.com/yielddelta" target="_blank" class="social-link">
+                        𝕏 @yielddelta
+                    </a>
+                    <a href="mailto:social@yielddelta.xyz" class="social-link">
+                        📧 social@yielddelta.xyz
+                    </a>
+                    <a href="https://discord.gg/NMCb5CtG" target="_blank" class="social-link">
+                        💬 Discord
+                    </a>
                 </div>
             </div>
             
