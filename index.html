@@ -11,16 +11,17 @@
             padding: 0;
             box-sizing: border-box;
         }
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
+```
     .deck-container {
         width: 100%;
         max-width: 1200px;
@@ -273,7 +274,7 @@
         box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.5);
     }
 
-    .-grid {
+    .team-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 32px;
@@ -460,6 +461,19 @@
         line-height: 1.5;
     }
 
+    .preseed-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #10b981, #3b82f6);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
     @media (max-width: 768px) {
         .slide {
             padding: 40px 30px;
@@ -478,7 +492,6 @@
         }
     }
 </style>
-
 </head>
 <body>
     <div class="deck-container">
@@ -497,6 +510,8 @@
                 </div>
             </div>
         </div>
+
+```
     <!-- Slide 2: The Problem -->
     <div class="slide">
         <div class="slide-header">
@@ -809,37 +824,37 @@
         </div>
         <div class="roadmap">
             <div class="roadmap-item">
-                <h3>Q1 2025 - Launch</h3>
-                <p style="color: #94a3b8; margin-top: 8px;">• Public mainnet launch</p>
+                <h3>Q1 2026 - Close Pre-Seed</h3>
+                <p style="color: #94a3b8; margin-top: 8px;">• Close pre-seed round</p>
+                <p style="color: #94a3b8;">• Finalize smart contract architecture</p>
+                <p style="color: #94a3b8;">• Begin security audit process</p>
+                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $300-500K raised</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>Q2 2026 - Build & Audit</h3>
+                <p style="color: #94a3b8; margin-top: 8px;">• Complete smart contract audits</p>
+                <p style="color: #94a3b8;">• Engineering team expansion (1-2 FTEs)</p>
+                <p style="color: #94a3b8;">• Private testnet with partners</p>
+                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: Audit-ready for mainnet</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>Q3 2026 - Mainnet Launch</h3>
+                <p style="color: #94a3b8; margin-top: 8px;">• Public mainnet launch on SEI</p>
                 <p style="color: #94a3b8;">• Initial liquidity mining program</p>
-                <p style="color: #94a3b8;">• Partnership with SEI ecosystem projects</p>
+                <p style="color: #94a3b8;">• SEI ecosystem partnerships</p>
                 <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $10M TVL</p>
             </div>
             <div class="roadmap-item">
-                <h3>Q2 2025 - Expansion</h3>
-                <p style="color: #94a3b8; margin-top: 8px;">• Advanced AI strategies launch</p>
-                <p style="color: #94a3b8;">• Mobile app release</p>
-                <p style="color: #94a3b8;">• Cross-chain bridge integration</p>
-                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $50M TVL</p>
-            </div>
-            <div class="roadmap-item">
-                <h3>Q3 2025 - Scale</h3>
-                <p style="color: #94a3b8; margin-top: 8px;">• Institutional product launch</p>
-                <p style="color: #94a3b8;">• $YIELD governance token</p>
-                <p style="color: #94a3b8;">• Advanced IL protection v2</p>
-                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $200M TVL</p>
-            </div>
-            <div class="roadmap-item">
-                <h3>Q4 2025 - Dominate</h3>
-                <p style="color: #94a3b8; margin-top: 8px;">• Multi-chain deployment</p>
+                <h3>Q4 2026 & Beyond - Scale</h3>
+                <p style="color: #94a3b8; margin-top: 8px;">• $YIELD governance token TGE</p>
+                <p style="color: #94a3b8;">• Advanced AI strategies & cross-chain</p>
                 <p style="color: #94a3b8;">• B2B white-label solution</p>
-                <p style="color: #94a3b8;">• AI strategy marketplace</p>
-                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $500M TVL</p>
+                <p style="color: #10b981; margin-top: 8px; font-weight: 600;">Target: $50M+ TVL</p>
             </div>
         </div>
     </div>
 
-    <!-- Slide 10: Team & Ask -->
+    <!-- Slide 10: Team & Ask - UPDATED WITH CORRECT PRE-SEED NUMBERS -->
     <div class="slide">
         <div class="slide-header">
             <h2>Team & Investment</h2>
@@ -850,26 +865,38 @@
                 <div class="avatar">👨‍💻</div>
                 <h3>George Alexander Lugo</h3>
                 <p style="color: #3b82f6;">CEO & Founder</p>
-                <p style="margin-top: 8px; color: #94a3b8; font-size: 0.9em;">Ex-Apple, Vonage • DeFi OG</p>
+                <p style="margin-top: 8px; color: #94a3b8; font-size: 0.9em;">7+ years at Apple, Vonage, Guild Mortgage</p>
+                <p style="color: #94a3b8; font-size: 0.9em;">Economics background • In crypto since 2018</p>
             </div>
         </div>
         
         <div style="margin-top: 40px; padding: 32px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1)); border-radius: 16px;">
-            <h3 style="text-align: center; margin-bottom: 24px;">Investment Opportunity</h3>
+            <div style="text-align: center; margin-bottom: 24px;">
+                <span class="preseed-badge">🌱 Pre-Seed Round</span>
+                <h3 style="margin-top: 8px;">Investment Opportunity</h3>
+            </div>
             <div class="content-grid">
                 <div style="text-align: center;">
-                    <div class="stat-number" style="font-size: 1.8em;">$2M</div>
-                    <div class="stat-label">Seed Round</div>
+                    <div class="stat-number" style="font-size: 1.6em;">$300-500K</div>
+                    <div class="stat-label">Raising</div>
                 </div>
                 <div style="text-align: center;">
-                    <div class="stat-number" style="font-size: 1.8em;">$15M</div>
-                    <div class="stat-label">Valuation</div>
+                    <div class="stat-number" style="font-size: 1.6em;">$4-5M</div>
+                    <div class="stat-label">Valuation Cap</div>
                 </div>
                 <div style="text-align: center;">
-                    <div class="stat-number" style="font-size: 1.8em;">18mo</div>
-                    <div class="stat-label">Runway</div>
+                    <div class="stat-number" style="font-size: 1.6em;">Q3 2026</div>
+                    <div class="stat-label">Mainnet Target</div>
                 </div>
             </div>
+            <div style="margin-top: 24px; text-align: center;">
+                <p style="color: #94a3b8; font-size: 0.95em;">SAFE + Token Warrant • Pro-rata rights at $50K+</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 24px; padding: 20px; background: rgba(16, 185, 129, 0.05); border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.2);">
+            <h4 style="color: #10b981; margin-bottom: 12px;">Use of Funds</h4>
+            <p style="color: #94a3b8; font-size: 0.95em;">Smart contract audits ($25-30K) • Engineering hires (1-2 FTEs) • Mainnet infrastructure • Operating runway</p>
         </div>
     </div>
 
@@ -938,7 +965,6 @@
         slides[index].classList.add('active');
         document.getElementById('current-slide').textContent = index + 1;
         
-        // Update navigation buttons
         const prevBtn = document.querySelector('.nav-button');
         const nextBtn = document.querySelectorAll('.nav-button')[1];
         
@@ -960,7 +986,6 @@
         }
     }
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight') nextSlide();
         if (e.key === 'ArrowLeft') previousSlide();
@@ -974,7 +999,6 @@
         }
     });
 
-    // Touch/swipe support for mobile
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -992,9 +1016,7 @@
         if (touchEndX > touchStartX + 50) previousSlide();
     }
 
-    // Initialize
     showSlide(0);
 </script>
-
 </body>
 </html>
